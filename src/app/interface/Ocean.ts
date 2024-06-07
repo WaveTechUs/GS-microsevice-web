@@ -7,7 +7,6 @@ export interface Ocean {
   phMin?: Number;
   phMax?: Number;
   nivelPoluicao?: string;
-  pagina?: Number;
-  qtde?: Number;
-
+  pagina: Number;
+  qtde: Number;
 }
