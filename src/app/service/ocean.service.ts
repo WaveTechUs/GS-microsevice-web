@@ -9,39 +9,38 @@ import { Observable } from 'rxjs';
 })
 export class OceanService {
   private oceanUrl = 'https://fiap-3sis-gs-20241.azurewebsites.net/OceanData?';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   oceans: OceanRequisicao[] = [];
 
   getTable(ocean: OceanRequisicao): Observable<Ocean[]> {
     var url = this.oceanUrl;
-    if (ocean.regiao != '') {
+    if (ocean.regiao) {
       url = url + 'regiao=' + ocean.regiao + '&';
     }
-    if (ocean.especie != '') {
+    if (ocean.especie) {
       url = url + 'especie=' + ocean.especie + '&';
     }
-    if (ocean.statusConservacao != '') {
+    if (ocean.statusConservacao) {
       url = url + 'statusConservacao=' + ocean.statusConservacao + '&';
     }
-    if (ocean.temperaturaMin != undefined && ocean.temperaturaMin <= 0) {
+    if (ocean.temperaturaMin) {
       url = url + 'temperaturaMin=' + ocean.temperaturaMin + '&';
     }
-    if (ocean.temperaturaMax != undefined && ocean.temperaturaMax <= 0) {
+    if (ocean.temperaturaMax) {
       url = url + 'temperaturaMax=' + ocean.temperaturaMax + '&';
     }
-    if (ocean.phMin != undefined && ocean.phMin <= 0) {
+    if (ocean.phMin) {
       url = url + 'phMin=' + ocean.phMin + '&';
     }
-    if (ocean.phMax != undefined && ocean.phMax <= 0) {
+    if (ocean.phMax) {
       url = url + 'phMax=' + ocean.phMax + '&';
     }
-    if (ocean.nivelPoluicao != '') {
+    if (ocean.nivelPoluicao) {
       url = url + 'nivelPoluicao=' + ocean.nivelPoluicao + '&';
     }
     url = url + 'pagina=' + ocean.pagina + '&';
     url = url + 'qtde=10';
 
-    console.log('url ------->', url);
     return this.http.get(url) as Observable<Ocean[]>;
   }
 }

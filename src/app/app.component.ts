@@ -5,8 +5,7 @@ import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
   FormGroup,
-  ReactiveFormsModule,
-  Validators,
+  ReactiveFormsModule
 } from '@angular/forms';
 import { Ocean } from './interface/Ocean';
 import { OceanRequisicao } from './interface/OceanRequisicao';
@@ -27,11 +26,19 @@ export class AppComponent {
     private oceanService: OceanService,
     private formBuilder: FormBuilder
   ) {
+    this.oceanForm = this.formBuilder.group({
+      regiao: [''],
+      statusConservacao: [''],
+      especie: [''],
+      temperaturaMin: [''],
+      temperaturaMax: [''],
+      phMin: [''],
+      phMax: [''],
+      nivelPoluicao: ['']
+    });
   }
 
   pesquisar(): void {
-    console.log('testeeeeeeee');
-
     const req = {
       regiao: this.oceanForm.get('regiao')?.value ?? '',
       statusConservacao: this.oceanForm.get('statusConservacao')?.value ?? '',
@@ -43,7 +50,6 @@ export class AppComponent {
       nivelPoluicao: this.oceanForm.get('nivelPoluicao')?.value ?? '',
       pagina: 1 ?? '',
     } as OceanRequisicao;
-
     this.oceanService.getTable(req).subscribe((oceans) => (this.oceans = oceans));
   }
 
@@ -61,8 +67,5 @@ export class AppComponent {
     } as OceanRequisicao;
 
     this.oceanService.getTable(req).subscribe((oceans) => (this.oceans = oceans));
-    // setTimeout(() => {
-    //   console.log('oceans', this.oceans);
-    // }, 1000);
   }
 }

@@ -24,32 +24,36 @@
 <div class="main-container">
   <form class="row gy-2 gx-3 align-items-center" [formGroup]="oceanForm" (ngSubmit)="pesquisar()">
     <h4>Filters</h4>
-    <div class=" col-auto">
-      <label class="" for="autoSizingSelect">Region</label>
-      <input name="regiao" id="regiao" type="text"  class="form-control"  placeholder="">
+    <div class="col-auto">
+      <label for="regiao">Region</label>
+      <input name="regiao" id="regiao" type="text" class="form-control" formControlName="regiao" placeholder="">
     </div>
     <div class="col-auto">
-      <label class="" for="autoSizingSelect">Species</label>
-      <input name="statusConservacao" id="statusConservacao"  type="text" class="form-control" id="autoSizingInput" placeholder="">
-   </div>
-    <div class="col-auto">
-      <label class="" for="autoSizingSelect">Conservation Status</label>
-      <input name="especie" id="especie"  type="text" class="form-control" id="autoSizingInput" placeholder="">
+      <label for="statusConservacao">Species</label>
+      <input name="statusConservacao" id="statusConservacao" type="text" class="form-control"
+        formControlName="statusConservacao" placeholder="">
     </div>
     <div class="col-auto">
-      <label class="" for="autoSizingInput">Water Temperature</label>
-      <input name="temperaturaMin" id="temperaturaMin"  type="text" class="form-control" id="autoSizingInput" placeholder="">
+      <label for="especie">Conservation Status</label>
+      <input name="especie" id="especie" type="text" class="form-control" formControlName="especie" placeholder="">
     </div>
     <div class="col-auto">
-      <label class="" for="autoSizingInput">pH</label>
-      <input name="phMin" id="phMin" t type="text" class="form-control" id="autoSizingInput" placeholder="">
+      <label for="temperaturaMin">Water Temperature</label>
+      <input name="temperaturaMin" id="temperaturaMin" type="text" class="form-control" formControlName="temperaturaMin"
+        placeholder="">
     </div>
     <div class="col-auto">
-      <label class="" for="autoSizingInput">Pollutions Levels</label>
-      <input name="nivelPoluicao" id="nivelPoluicao"  type="text" class="form-control" id="autoSizingInput" placeholder="">
+      <label for="phMin">pH</label>
+      <input name="phMin" id="phMin" type="text" class="form-control" formControlName="phMin" placeholder="">
     </div>
-    <button type="submit" class="btn btn-primary" (click)="pesquisar()" >Search</button>
+    <div class="col-auto">
+      <label for="nivelPoluicao">Pollutions Levels</label>
+      <input name="nivelPoluicao" id="nivelPoluicao" type="text" class="form-control" formControlName="nivelPoluicao"
+        placeholder="">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
   </form>
+
   <table class="table">
     <thead>
       <tr>
@@ -62,12 +66,12 @@
     <tbody>
       @for (ocean of oceans; track $index)
       {
-        <tr>
-          <td scope="row">{{ocean.regiao}}</td>
-          <td>{{ocean.temperaturaAgua}}</td>
-          <td>{{ocean.pH}}</td>
-          <td>{{ocean.nivelPoluicao}}</td>
-        </tr>
+      <tr>
+        <td scope="row">{{ocean.regiao}}</td>
+        <td>{{ocean.temperaturaAgua}}</td>
+        <td>{{ocean.pH}}</td>
+        <td>{{ocean.nivelPoluicao}}</td>
+      </tr>
       }
     </tbody>
   </table>
