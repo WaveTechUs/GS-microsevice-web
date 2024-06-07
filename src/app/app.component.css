@@ -1,3 +1,7 @@
 .main-container{
   margin: 0 10vw 0 10vw;
 }
+
+.page-item a{
+  cursor: pointer !important;
+}

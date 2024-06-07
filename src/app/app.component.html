@@ -77,9 +77,9 @@
   </table>
   <nav aria-label="Page navigation example">
     <ul class="pagination">
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item" (click)="mudarPagina(1)" ><a class="page-link" (click)="mudarPagina(1)">1</a></li>
+      <li class="page-item" (click)="mudarPagina(2)"><a class="page-link" (click)="mudarPagina(2)">2</a></li>
+      <li class="page-item" (click)="mudarPagina(3)"><a class="page-link" (click)="mudarPagina(3)">3</a></li>
     </ul>
   </nav>
 </div>

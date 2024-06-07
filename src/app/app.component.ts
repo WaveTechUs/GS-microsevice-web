@@ -19,6 +19,7 @@ import { OceanRequisicao } from './interface/OceanRequisicao';
 })
 export class AppComponent {
   title = 'global';
+  pag = 1;
   oceanForm: FormGroup = new FormGroup({});
   oceans: Ocean[] = [];
 
@@ -41,16 +42,21 @@ export class AppComponent {
   pesquisar(): void {
     const req = {
       regiao: this.oceanForm.get('regiao')?.value ?? '',
-      statusConservacao: this.oceanForm.get('statusConservacao')?.value ?? '',
+      statusConservacao: (this.oceanForm.get('statusConservacao')?.value) ?? '',
       especie: this.oceanForm.get('especie')?.value ?? '',
       temperaturaMin: this.oceanForm.get('temperaturaMin')?.value ?? undefined,
       temperaturaMax: this.oceanForm.get('temperaturaMin')?.value ?? undefined,
       phMin: this.oceanForm.get('phMin')?.value ?? undefined,
       phMax: this.oceanForm.get('phMin')?.value ?? undefined,
       nivelPoluicao: this.oceanForm.get('nivelPoluicao')?.value ?? '',
-      pagina: 1 ?? '',
+      pagina: this.pag,
     } as OceanRequisicao;
     this.oceanService.getTable(req).subscribe((oceans) => (this.oceans = oceans));
+  }
+
+  mudarPagina(pagInput: number): void {
+    this.pag = pagInput;
+    this.pesquisar();
   }
 
   ngOnInit(): void {
