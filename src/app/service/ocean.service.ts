@@ -12,35 +12,36 @@ export class OceanService {
   constructor(private http: HttpClient) {}
   oceans: OceanRequisicao[] = [];
 
-  getTable(ocean: OceanRequisicao): Observable<Ocean> {
+  getTable(ocean: OceanRequisicao): Observable<Ocean[]> {
     var url = this.oceanUrl;
-    if (!ocean.regiao) {
+    if (ocean.regiao != '') {
       url = url + 'regiao=' + ocean.regiao + '&';
     }
-    if (!ocean.especie) {
+    if (ocean.especie != '') {
       url = url + 'especie=' + ocean.especie + '&';
     }
-    if (!ocean.statusConservacao) {
+    if (ocean.statusConservacao != '') {
       url = url + 'statusConservacao=' + ocean.statusConservacao + '&';
     }
-    if (!ocean.temperaturaMin) {
+    if (ocean.temperaturaMin != undefined && ocean.temperaturaMin <= 0) {
       url = url + 'temperaturaMin=' + ocean.temperaturaMin + '&';
     }
-    if (!ocean.temperaturaMax) {
+    if (ocean.temperaturaMax != undefined && ocean.temperaturaMax <= 0) {
       url = url + 'temperaturaMax=' + ocean.temperaturaMax + '&';
     }
-    if (!ocean.phMin) {
+    if (ocean.phMin != undefined && ocean.phMin <= 0) {
       url = url + 'phMin=' + ocean.phMin + '&';
     }
-    if (!ocean.phMax) {
+    if (ocean.phMax != undefined && ocean.phMax <= 0) {
       url = url + 'phMax=' + ocean.phMax + '&';
     }
-    if (!ocean.nivelPoluicao) {
+    if (ocean.nivelPoluicao != '') {
       url = url + 'nivelPoluicao=' + ocean.nivelPoluicao + '&';
     }
     url = url + 'pagina=' + ocean.pagina + '&';
-    url = url + 'qtde=' + ocean.qtde;
+    url = url + 'qtde=10';
 
-    return this.http.get(url) as Observable<Ocean>;
+    console.log('url ------->', url);
+    return this.http.get(url) as Observable<Ocean[]>;
   }
 }

@@ -22,35 +22,34 @@
 </nav>
 
 <div class="main-container">
-  <form class="row gy-2 gx-3 align-items-center" [formGroup]="oceanForm">
+  <form class="row gy-2 gx-3 align-items-center" [formGroup]="oceanForm" (ngSubmit)="pesquisar()">
     <h4>Filters</h4>
     <div class=" col-auto">
       <label class="" for="autoSizingSelect">Region</label>
-      <input type="text" class="form-control" id="autoSizingInput" placeholder="">
+      <input name="regiao" id="regiao" type="text"  class="form-control"  placeholder="">
     </div>
     <div class="col-auto">
       <label class="" for="autoSizingSelect">Species</label>
-      <input type="text" class="form-control" id="autoSizingInput" placeholder="">
-    </div>
+      <input name="statusConservacao" id="statusConservacao"  type="text" class="form-control" id="autoSizingInput" placeholder="">
+   </div>
     <div class="col-auto">
       <label class="" for="autoSizingSelect">Conservation Status</label>
-      <input type="text" class="form-control" id="autoSizingInput" placeholder="">
+      <input name="especie" id="especie"  type="text" class="form-control" id="autoSizingInput" placeholder="">
     </div>
-
     <div class="col-auto">
       <label class="" for="autoSizingInput">Water Temperature</label>
-      <input type="text" class="form-control" id="autoSizingInput" placeholder="">
+      <input name="temperaturaMin" id="temperaturaMin"  type="text" class="form-control" id="autoSizingInput" placeholder="">
     </div>
     <div class="col-auto">
       <label class="" for="autoSizingInput">pH</label>
-      <input type="text" class="form-control" id="autoSizingInput" placeholder="">
+      <input name="phMin" id="phMin" t type="text" class="form-control" id="autoSizingInput" placeholder="">
     </div>
     <div class="col-auto">
       <label class="" for="autoSizingInput">Pollutions Levels</label>
-      <input type="text" class="form-control" id="autoSizingInput" placeholder="">
+      <input name="nivelPoluicao" id="nivelPoluicao"  type="text" class="form-control" id="autoSizingInput" placeholder="">
     </div>
+    <button type="submit" class="btn btn-primary" (click)="pesquisar()" >Search</button>
   </form>
-  <button type="submit " class="btn btn-primary">Search</button>
   <table class="table">
     <thead>
       <tr>
@@ -61,12 +60,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td scope="row">Índico</td>
-        <td>23</td>
-        <td>7.4</td>
-        <td>baixo</td>
-      </tr>
+      @for (ocean of oceans; track $index)
+      {
+        <tr>
+          <td scope="row">{{ocean.regiao}}</td>
+          <td>{{ocean.temperaturaAgua}}</td>
+          <td>{{ocean.pH}}</td>
+          <td>{{ocean.nivelPoluicao}}</td>
+        </tr>
+      }
     </tbody>
   </table>
   <nav aria-label="Page navigation example">

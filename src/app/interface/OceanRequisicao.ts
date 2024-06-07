@@ -2,11 +2,10 @@ export interface OceanRequisicao {
   regiao?: string;
   statusConservacao?: string;
   especie?: string;
-  temperaturaMin?: Number;
-  temperaturaMax?: Number;
-  phMin?: Number;
-  phMax?: Number;
+  temperaturaMin?: number;
+  temperaturaMax?: number;
+  phMin?: number;
+  phMax?: number;
   nivelPoluicao?: string;
-  pagina: Number;
-  qtde: Number;
+  pagina: number;
 }
