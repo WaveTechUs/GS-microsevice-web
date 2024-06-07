@@ -1,12 +1,11 @@
+import { Especie } from './Especies';
+import { ProjetoConvervacao } from './ProjetoConservacao';
+
 export interface Ocean {
   regiao?: string;
-  statusConservacao?: string;
-  especie?: string;
-  temperaturaMin?: Number;
-  temperaturaMax?: Number;
-  phMin?: Number;
-  phMax?: Number;
+  temperaturaAgua?: Number;
+  pH?: Number;
   nivelPoluicao?: string;
-  pagina: Number;
-  qtde: Number;
+  especie?: Especie[];
+  projetosConservacao: ProjetoConvervacao[];
 }

@@ -22,9 +22,9 @@
 </nav>
 
 <div class="main-container">
-  <form class="row gy-2 gx-3 align-items-center">
+  <form class="row gy-2 gx-3 align-items-center" [formGroup]="oceanForm">
     <h4>Filters</h4>
-    <div class="col-auto">
+    <div class=" col-auto">
       <label class="" for="autoSizingSelect">Region</label>
       <input type="text" class="form-control" id="autoSizingInput" placeholder="">
     </div>

@@ -8,7 +8,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Ocean } from './interface/Ocean';
+import { OceanRequisicao } from './interface/OceanRequisicao';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +20,7 @@ import { Ocean } from './interface/Ocean';
 export class AppComponent {
   title = 'global';
   oceanForm: FormGroup = new FormGroup({});
-  oceans: Ocean[] = [];
+  oceans: OceanRequisicao[] = [];
 
   constructor(
     private oceanService: OceanService,
@@ -31,4 +31,7 @@ export class AppComponent {
       telefone: ['', Validators.required],
     });
   }
+  //pesquisar(): void {
+  //  this.oceanService.getTable().subscribe((clientes) => (this.clientes = clientes));
+  //}
 }
