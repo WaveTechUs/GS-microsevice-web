@@ -61,6 +61,7 @@
         <th scope="col">Temperatura</th>
         <th scope="col">pH</th>
         <th scope="col">Nível de poluição</th>
+        <th scope="col">Detalhes</th>
       </tr>
     </thead>
     <tbody>
@@ -71,15 +72,56 @@
         <td>{{ocean.temperaturaAgua}}</td>
         <td>{{ocean.pH}}</td>
         <td>{{ocean.nivelPoluicao}}</td>
+        <td><a (click)="verDetalhes(ocean)">Ver Detalhes</a></td>
       </tr>
       }
     </tbody>
   </table>
   <nav aria-label="Page navigation example">
     <ul class="pagination">
-      <li class="page-item" (click)="mudarPagina(1)" ><a class="page-link" (click)="mudarPagina(1)">1</a></li>
+      <li class="page-item" (click)="mudarPagina(1)"><a class="page-link" (click)="mudarPagina(1)">1</a></li>
       <li class="page-item" (click)="mudarPagina(2)"><a class="page-link" (click)="mudarPagina(2)">2</a></li>
       <li class="page-item" (click)="mudarPagina(3)"><a class="page-link" (click)="mudarPagina(3)">3</a></li>
     </ul>
   </nav>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Detahes</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="fs-4">Região:</p>
+        <p class="fs-6">{{currentOcean.regiao}}</p>
+        <p class="fs-4">Nível de Poluição:</p>
+        <p class="fs-6">{{currentOcean.nivelPoluicao}}</p>
+        <p class="fs-4">pH:</p>
+        <p class="fs-6">{{currentOcean.pH}}</p>
+        <p class="fs-4">Temperatura da Água:</p>
+        <p class="fs-6">{{currentOcean.temperaturaAgua}}</p>
+        <p class="fs-4">Especialidades:</p>
+          @for (item of currentOcean.especies; track $index)
+          {
+            <p>Nome: {{item.nome}}</p>
+            <p>Status: {{item.status}}</p>
+            <hr>
+          }
+        <p class="fs-4">Especialidades:</p>
+          @for (item of currentOcean.projetosConservacao; track $index)
+          {
+            <p>Nome do Projeto: {{item.nomeProjeto}}</p>
+            <p>Tipo do Projeto: {{item.tipoProjeto}}</p>
+            <p>Tipo da Participação: {{item.tipoParticipacao}}</p>
+            <hr>
+          }
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Ocean } from './interface/Ocean';
 import { OceanRequisicao } from './interface/OceanRequisicao';
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ export class AppComponent {
   pag = 1;
   oceanForm: FormGroup = new FormGroup({});
   oceans: Ocean[] = [];
+  currentOcean: Ocean = {} as Ocean;
 
   constructor(
     private oceanService: OceanService,
@@ -57,6 +59,18 @@ export class AppComponent {
   mudarPagina(pagInput: number): void {
     this.pag = pagInput;
     this.pesquisar();
+  }
+
+  verDetalhes(ocean: Ocean) {
+    // abrir modal
+    // passar os dados do ocean selecionado
+    // exibir os dados
+    // botão de fechar
+    var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+      keyboard: false
+    });
+    this.currentOcean = ocean;
+    myModal.show();
   }
 
   ngOnInit(): void {

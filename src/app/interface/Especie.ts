@@ -1,4 +1,4 @@
-export interface Especie {
+export interface Especies {
   nome: string;
   status: string;
 }

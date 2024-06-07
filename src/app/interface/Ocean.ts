@@ -1,4 +1,4 @@
-import { Especie } from './Especies';
+import { Especies } from './Especie';
 import { ProjetoConvervacao } from './ProjetoConservacao';
 
 export interface Ocean {
@@ -6,6 +6,6 @@ export interface Ocean {
   temperaturaAgua?: Number;
   pH?: Number;
   nivelPoluicao?: string;
-  especie?: Especie[];
+  especies?: Especies[];
   projetosConservacao: ProjetoConvervacao[];
 }
